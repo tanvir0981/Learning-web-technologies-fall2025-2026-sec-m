@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Person Profile</title>
+</head>
+<body>
+  <form enctype="multipart/form-data">
+    <table border="2" cellpadding="6" cellspacing="0">
+<tr>
+        <th colspan="2"style="font-size:22px;">PERSON PROFILE</th>
+</tr>
+<tr>
+    <td>Name</td>
+    <td><input type="text"name="name"></td>
+    </tr>
+    <tr>
+    <td>Email</td>
+    <td><input type="email"name="email"></td>
+    </tr>
+    <tr>
+    <td>Gender</td>
+    <td>
+    <input type="radio"name="gender"value="male">Male
+    <input type="radio"name="gender"value="female">Female
+    <input type="radio"name="gender"value="other">Other
+    </td>
+    </tr>
+    <tr>
+    <td>Date of Birth</td>
+    <td>
+          <input type="text"name="day"size="2"> /
+          <input type="text"name="month"size="2"> /
+          <input type="text"name="year"size="4">
+          (dd/mm/yyyy)
+    </td>
+    </tr>
+    <tr>
+    <td>Blood Group</td>
+    <td>
+        <select name="bloodgroup">
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+    </td>
+    </tr>
+    <tr>
+    <td>Degree</td>
+    <td>
+          <input type="checkbox" name="degree" value="ssc"> SSC
+          <input type="checkbox" name="degree" value="hsc"> HSC
+          <input type="checkbox" name="degree" value="bsc"> BSc.
+          <input type="checkbox" name="degree" value="msc"> MSc.
+    </td>
+    </tr>
+    <tr>
+        <td>Photo</td>
+    <td>
+          <input type="file" name="photo">
+    </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="right">
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+    </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

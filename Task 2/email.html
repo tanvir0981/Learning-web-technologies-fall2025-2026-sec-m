@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Email Form</title>
+<style>
+    .hint-box {
+      border: 1px solid #888;
+      font-size: 13px;
+      margin-top: 10px;
+      padding: 4px 8px;
+      display: none;
+      width: 220px;
+    }
+    .info-icon {
+      display: inline-block;
+      border: 1px solid #3c7edb;
+      color: #3c7edb;
+      background: #eaf4fd;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 5px;
+      line-height: 20px;
+      vertical-align: middle;
+    }
+</style>
+<script>
+    function showHint() {
+      document.getElementById('hint').style.display = 'block';
+    }
+    function hideHint() {
+      document.getElementById('hint').style.display = 'none';
+    }
+</script>
+</head>
+<body>
+<form>
+    <label>Email</label><br>
+    <input type="email"name="email">
+    <span class="info-icon"onmouseover="showHint()" onmouseout="hideHint()">i</span><br><br>
+    <input type="submit"value="Submit"><br>
+    <div id="hint"class="hint-box">
+      hint: sample@example.com
+</div>
+</form>
+</body>
+</html>

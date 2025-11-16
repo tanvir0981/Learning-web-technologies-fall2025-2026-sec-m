@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDob() {
+            var dayStr   = document.getElementById("dd").value.trim();
+            var monthStr = document.getElementById("mm").value.trim();
+            var yearStr  = document.getElementById("yyyy").value.trim();
+            var msg      = document.getElementById("message");
+            
+
+            msg.textContent = "";
+
+            if (dayStr.length === 0 || monthStr.length === 0 || yearStr.length === 0) {
+                msg.textContent = "Date of Birth cannot be empty.";
+                return false;
+            }
+
+            var day   = Number.parseInt(dayStr, 10);
+            var month = Number.parseInt(monthStr, 10);
+            var year  = Number.parseInt(yearStr, 10);
+
+            var invalid =
+                Number.isNaN(day)   || day < 0  || day > 31  ||
+                Number.isNaN(month) || month < 1 || month > 12 ||
+                Number.isNaN(year)  || year < 1900 || year > 2016;
+
+            if (invalid) {
+                msg.textContent =
+                 "Must be a valid number (dd: 0-31, mm: 1-12, yyyy: 1900-2016)";
+            } else {
+                msg.textContent = ""; 
+            }
+
+            return false; 
+        }
+    </script>
+</head>
+<body>
+    <h2>Date of Birth</h2>
+
+    <form onsubmit="return validateDob();">
+        <label>dd</label>  <label>mm</label>  <label>yyyy</label><br>
+        <input type="text" id="dd" size="2"> /
+        <input type="text" id="mm" size="2"> /
+        <input type="text" id="yyyy" size="4"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message"></p>
+</body>
+</html>

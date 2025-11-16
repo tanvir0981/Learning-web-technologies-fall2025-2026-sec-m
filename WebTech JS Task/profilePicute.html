@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Picture Validation</title>
+    <script>
+        function validateProfile() {
+            var userIdStr = document.getElementById("userid").value;
+            var picInput  = document.getElementById("picture");
+            var msg       = document.getElementById("message");
+
+            msg.textContent = "";
+            userIdStr = userIdStr.trim();
+
+            if (userIdStr.length === 0) {
+                msg.textContent = "User Id cannot be empty and has to be a positive number.";
+                return false;
+            }
+
+            var userId = Number.parseInt(userIdStr, 10);
+
+            if (Number.isNaN(userId) || userId <= 0) {
+                msg.textContent = "User Id cannot be empty and has to be a positive number.";
+                return false;
+            }
+            if (picInput.value === "" || picInput.files.length === 0) {
+                msg.textContent = "Picture cannot be empty.";
+                return false;
+            }
+
+            msg.textContent = "";
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h2>Profile Picture</h2>
+
+    <form onsubmit="return validateProfile();">
+        <label for="userid">User Id</label><br>
+        <input type="text" id="userid" name="userid"><br><br>
+
+        <label for="picture">Picture</label><br>
+        <input type="file" id="picture" name="picture"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message"></p>
+</body>
+</html>

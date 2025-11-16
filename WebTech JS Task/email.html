@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    <script>
+        function validateEmail() {
+            var input = document.getElementById("email").value;
+            var msg   = document.getElementById("message");
+
+            msg.textContent = "";
+
+            input = input.trim();
+
+            if (input.length === 0) {
+                msg.textContent = "Email cannot be empty.";
+                return false;
+            }
+            var isValid = true;
+
+            if (input.indexOf(" ") !== -1) {
+                isValid = false;
+            }
+            var atPos  = input.indexOf("@");
+            var lastAt = input.lastIndexOf("@");
+            if (atPos <= 0 || atPos !== lastAt || atPos === input.length - 1) {
+                isValid = false;
+            }
+            var dotPos = input.lastIndexOf(".");
+            if (dotPos <= atPos + 1 || dotPos === input.length - 1) {
+                isValid = false;
+            }
+
+            if (!isValid) {
+                msg.textContent = "ii. Must be a valid email address (i.e anything@example.com)";
+            } else {
+                msg.textContent = ""; 
+            }
+
+            return false; 
+        }
+    </script>
+</head>
+<body>
+    <h2>Email</h2>
+
+    <form onsubmit="return validateEmail();">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message"></p>
+</body>
+</html>

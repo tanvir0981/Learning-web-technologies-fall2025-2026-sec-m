@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Validation</title>
+    <script>
+        function validateName() {
+            var input = document.getElementById("name").value;
+            var msg   = document.getElementById("message");
+
+            msg.textContent = "";
+
+            input = input.trim();
+
+            var error = "";
+
+            if (input.length === 0) {
+                error = "Name cannot be empty.";
+            }
+
+            if (error === "") {
+                var firstChar = input.charAt(0);
+                var code = firstChar.charCodeAt(0);
+
+                var isUpper = (code >= 65 && code <= 90);
+                var isLower = (code >= 97 && code <= 122);
+
+                if (!(isUpper || isLower)) {
+                    error = "Name must start with a letter.";
+                }
+            }
+
+            if (error === "") {
+                var parts = input.split(" ");
+                var wordCount = 0;
+
+                for (var i = 0; i < parts.length; i++) {
+                    if (parts[i].trim().length > 0) {
+                        wordCount++;
+                    }
+                }
+
+                if (wordCount < 2) {
+                    error = "Name must contain at least two words.";
+                }
+            }
+
+            if (error === "") {
+                for (var j = 0; j < input.length; j++) {
+                    var ch = input.charAt(j);
+                    var code2 = ch.charCodeAt(0);
+
+                    var isUpper2 = (code2 >= 65 && code2 <= 90);
+                    var isLower2 = (code2 >= 97 && code2 <= 122);
+                    var isSpace  = (code2 === 32); // space
+                    var isDot    = (ch === ".");
+                    var isDash   = (ch === "-");
+
+                    if (!(isUpper2 || isLower2 || isSpace || isDot || isDash)) {
+                        error = "Only letters, spaces, dot(.) and dash(-) are allowed.";
+                        break;
+                    }
+                }
+            }
+            if (error !== "") {
+                msg.textContent = error;
+            } else {
+                msg.textContent = "";
+            }
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h2>Name</h2>
+
+    <form onsubmit="return validateName();">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message"></p>
+</body>
+</html>

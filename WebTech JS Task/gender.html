@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Validation</title>
+    <script>
+        function validateGender() {
+            var msg = document.getElementById("message");
+            msg.textContent = "";
+
+            var male   = document.getElementById("male").checked;
+            var female = document.getElementById("female").checked;
+            var other  = document.getElementById("other").checked;
+
+            if (!(male || female || other)) {
+                msg.textContent = "At least one of them has to be selected.";
+            } else {
+                msg.textContent = ""; 
+            }
+
+            return false; 
+        }
+    </script>
+</head>
+<body>
+    <h2>Gender</h2>
+
+    <form onsubmit="return validateGender();">
+        <fieldset>
+            <legend>Gender</legend>
+            <input type="radio" id="male" name="gender" value="Male"> Male
+            <input type="radio" id="female" name="gender" value="Female"> Female
+            <input type="radio" id="other" name="gender" value="Other"> Other
+        </fieldset>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message"></p>
+</body>
+</html>
